@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  air_quality:
+    container_name: air_quality
+    build: .
+    volumes:
+      - ./:/usr/app
+    environment:
+      KAFKA_BROKER_URL: broker:9092
+      TOPIC_NAME: air_quality
+      SLEEP_TIME: 60
+
+networks:
+  default:
+    external:
+      name: kafka-network
